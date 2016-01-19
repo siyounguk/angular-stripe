@@ -6,6 +6,7 @@ PaymentController.$inject = ['$http', 'API_URL'];
 function PaymentController($http, API_URL) {
   var self = this;
 
+  console.log(Stripe.card)
   self.card = {};
   self.payee = null;
   self.amount = null;
@@ -13,6 +14,7 @@ function PaymentController($http, API_URL) {
   self.paymentSuccessful = true;
 
   self.pay = function() {
+
     Stripe.card.createToken(self.card, function(status, response) {
       if(status === 200) {
         var data = {
@@ -44,7 +46,7 @@ function PaymentController($http, API_URL) {
     self.paymentSuccessful = false;
     self.Form.$setPristine(true);
     // use vanilla JS to reset form to remove browser's native autocomplete highlighting
-    
+
     document.getElementsByTagName('form')[0].reset();
   }
 }
