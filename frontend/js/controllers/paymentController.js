@@ -44,6 +44,7 @@ function PaymentController($http, API_URL) {
     self.paymentSuccessful = false;
     self.Form.$setPristine(true);
     // use vanilla JS to reset form to remove browser's native autocomplete highlighting
+    
     document.getElementsByTagName('form')[0].reset();
   }
 }
